@@ -1,0 +1,71 @@
+
+Prompt 1 (given): Develop a Python program that reads all the text files under a directory and returns the top-5 words with the most number of occurrences.
+
+Prompt 2: Can you parallelize it?
+
+Prompt 3: Out of the top 5 words list, find the character count of each character.
+
+Prompt: Write a Python program to find the nth Fibonacci number using recursion. Generate prompt 2 and 3 related to prompt 1, and provide clear and concise answers for all three.
+
+
+Prompt 1: Write a Python program to find the nth Fibonacci number using recursion.
+Answer:
+
+python
+
+def fibonacci(n):
+    if n <= 0:
+        return "Invalid input"
+    elif n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+print(f"The {n}th Fibonacci number is {fibonacci(n)}")
+
+
+
+Prompt 2: Optimize the recursive Fibonacci function to use memorization for better performance.
+Answer:
+
+python
+
+def fibonacci_memo(n, memo={}):
+    if n <= 0:
+        return "Invalid input"
+    elif n in memo:
+        return memo[n]
+    elif n == 1:
+        memo[n] = 0
+    elif n == 2:
+        memo[n] = 1
+    else:
+        memo[n] = fibonacci_memo(n-1, memo) + fibonacci_memo(n-2, memo)
+    return memo[n]
+
+print(f"The {n}th Fibonacci number with memoization is {fibonacci_memo(n)}")
+
+
+Prompt 3: Write a function to generate the first n Fibonacci numbers using an iterative approach.
+Answer:
+
+python
+
+def fibonacci_iterative(n):
+    if n <= 0:
+        return "Invalid input"
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib_sequence = [0, 1]
+    for i in range(2, n):
+        next_number = fib_sequence[-1] + fib_sequence[-2]
+        fib_sequence.append(next_number)
+    
+    return fib_sequence
+
+print(f"The first {n} Fibonacci numbers are: {fibonacci_iterative(n)}")
